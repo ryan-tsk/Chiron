@@ -150,6 +150,7 @@ def extract_file(input_data,input_file,mode = 'dna',unit=False,polya = None):
     read_h = list(input_data['/Raw/Reads'].values())[0]
     raw_signal = np.asarray(read_h[('Signal')])
     read_id = read_h.attrs['read_id']
+    print('v1' + read_id)
     # read_id = read_h.attrs['read_id'].decode('utf-8')
     if unit:
         global_attrs=input_data['/UniqueGlobalKey/channel_id/'].attrs
@@ -180,6 +181,7 @@ def extract_file_v2(root_h,mode = 'dna'):
     read_h = root_h['Raw']
     raw_signal = np.asarray(read_h[('Signal')])
     read_id = read_h.attrs['read_id']
+    print('v2' + read_id)
     if mode == 'rna':
         raw_signal = raw_signal[::-1]
     try:
