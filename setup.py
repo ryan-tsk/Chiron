@@ -17,7 +17,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 install_requires=[
   'h5py>=2.7.0',
   'mappy>=2.10.0',
-  'numpy>=1.13.3',
+  'numpy<1.22.0',
   'statsmodels>=0.8.0',
   'tqdm>=4.23.0',
   'scipy<1.8.0',
