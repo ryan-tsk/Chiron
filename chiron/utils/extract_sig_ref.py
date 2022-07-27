@@ -150,8 +150,7 @@ def extract_file(input_data,input_file,mode = 'dna',unit=False,polya = None):
     read_h = list(input_data['/Raw/Reads'].values())[0]
     raw_signal = np.asarray(read_h[('Signal')])
     read_id = read_h.attrs['read_id']
-    if isinstance(read_id, bytes):
-        read_id = read_h.attrs['read_id'].decode('utf-8')
+    # read_id = read_h.attrs['read_id'].decode('utf-8')
     if unit:
         global_attrs=input_data['/UniqueGlobalKey/channel_id/'].attrs
         offset = float(global_attrs['offset'])
@@ -167,7 +166,7 @@ def extract_file(input_data,input_file,mode = 'dna',unit=False,polya = None):
         raw_signal = raw_signal[::-1]
     try:
         reference = np.asarray(input_data[('Analyses/Basecall_1D_000/BaseCalled_template/Fastq')]).tostring()
-        reference = '@%s\n'%(os.path.basename(input_file).split('.')[0]) + '\n'.join(reference.decode('UTF-8').split('\n')[1:])
+        reference = '@%s\n'%(os.path.basename(input_file).split('.')[0]) + '\n'.join(reference.split('\n')[1:])
     except:
         try:
             reference = np.asarray(input_data[('Analyses/Alignment_000/Aligned_template/Fasta')]).tostring()
@@ -180,12 +179,12 @@ def extract_file(input_data,input_file,mode = 'dna',unit=False,polya = None):
 def extract_file_v2(root_h,mode = 'dna'):
     read_h = root_h['Raw']
     raw_signal = np.asarray(read_h[('Signal')])
-    read_id = read_h.attrs['read_id'].decode('utf-8')
+    read_id = read_h.attrs['read_id']
     if mode == 'rna':
         raw_signal = raw_signal[::-1]
     try:
         reference = np.asarray(root_h[('Analyses/Basecall_1D_000/BaseCalled_template/Fastq')]).tostring()
-        reference = '@%s\n'%(read_id) + '\n'.join(reference.decode('UTF-8').split('\n')[1:])
+        reference = '@%s\n'%(read_id) + '\n'.join(reference.split('\n')[1:])
     except:
         try:
             reference = np.asarray(root_h[('Analyses/Alignment_000/Aligned_template/Fasta')]).tostring()
