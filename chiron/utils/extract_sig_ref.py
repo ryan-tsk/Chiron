@@ -113,7 +113,7 @@ def extract_file_wrapper(args):
                     raise ValueError("Got empty raw signal")
                     #FLAGS.count += 1
             except Exception as e:
-                logger.error("Cannot extract file %s. %s"%(full_file_n,e))
+                logger.error("Version 1 error : Cannot extract file %s. %s"%(full_file_n,e))
                 return
             if FLAGS.idname:
                 sig_file_name = os.path.join(FLAGS.raw_folder, readid + '.signal')
@@ -135,7 +135,7 @@ def extract_file_wrapper(args):
                     raise ValueError("Got empty raw signal")
                     #FLAGS.count += 1
             except Exception as e:
-                logger.error("Cannot extract file %s. %s"%(full_file_n,e))
+                logger.error("Version 2 error : Cannot extract file %s. %s"%(full_file_n,e))
                 return
             with open(os.path.join(FLAGS.raw_folder, os.path.splitext(file_n)[0] + read_id + '.signal'), 'w+') as signal_file:
                 signal_file.write(" ".join([str(val) for val in raw_signal]))
