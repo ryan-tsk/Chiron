@@ -20,7 +20,7 @@ install_requires=[
   'numpy>=1.13.3',
   'statsmodels>=0.8.0',
   'tqdm>=4.23.0',
-  'scipy<=1.8.0',
+  'scipy<1.8.0',
   'biopython>=1.73',
   'packaging>=18.0'
 ]
