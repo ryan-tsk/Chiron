@@ -149,8 +149,8 @@ def extract_file_wrapper(args):
 def extract_file(input_data,input_file,mode = 'dna',unit=False,polya = None):
     read_h = list(input_data['/Raw/Reads'].values())[0]
     raw_signal = np.asarray(read_h[('Signal')])
+    print("Reading id....")
     read_id = read_h.attrs['read_id']
-    print('v1' + read_id)
     # read_id = read_h.attrs['read_id'].decode('utf-8')
     if unit:
         global_attrs=input_data['/UniqueGlobalKey/channel_id/'].attrs
