@@ -180,6 +180,7 @@ def extract_file(input_data,input_file,mode = 'dna',unit=False,polya = None):
 def extract_file_v2(root_h,mode = 'dna'):
     read_h = root_h['Raw']
     raw_signal = np.asarray(read_h[('Signal')])
+    print('Reading id v2....')
     read_id = read_h.attrs['read_id']
     print('v2' + read_id)
     if mode == 'rna':
